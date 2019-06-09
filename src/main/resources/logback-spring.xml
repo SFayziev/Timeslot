@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configuration scan="true">
+    <include resource="org/springframework/boot/logging/logback/base.xml"/>
+
+    <property name="LOGDIR" value="logs"></property>
+    <property name="SERVICE_NAME" value="ls-core"></property>
+
+   <appender name="ROLLINGFILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOGDIR}/${SERVICE_NAME}-log.%d{MM-dd-yyyy}.log</fileNamePattern>
+            <maxHistory>90</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <charset>utf-8</charset>
+            <Pattern>%d ${SERVICE_NAME} %-5level  [%thread] %logger: %msg%n</Pattern>
+        </encoder>
+    </appender>
+    <!--<logger name="com.operr"  level="debug"/>-->
+    <appender name="ROLLINGFILE_PROD" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOGDIR}/${SERVICE_NAME}-prod-log.%d{MM-dd-yyyy}.log</fileNamePattern>
+            <maxHistory>90</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <charset>utf-8</charset>
+            <Pattern>%d ${SERVICE_NAME} %-5level [%thread] %logger: %msg%n</Pattern>
+        </encoder>
+    </appender>
+    <springProfile name="dev">
+        <root level="warn">
+            <appender-ref ref="CONSOLE"/>
+        </root>
+        <logger name="com.sh" additivity="false" level="info">
+            <appender-ref ref="ROLLINGFILE"/>
+        </logger>
+    </springProfile>
+    <springProfile name="test">
+        <logger name="org.springframework.data.mongodb.core.MongoTemplate" level="WARN" />
+        <logger name="com.netflix.eureka" level="WARN" />
+        <logger name="com.netflix.discovery" level="OFF" />
+        <logger name="com.sh" level="ALL" />
+
+        <root level="WARN">
+            <appender-ref ref="CONSOLE"/>
+            <appender-ref ref="ROLLINGFILE"/>
+        </root>
+    </springProfile>
+
+    <springProfile name="prod">
+        <logger name="com.sh" additivity="false" level="info">
+            <appender-ref ref="ROLLINGFILE_PROD"/>
+        </logger>
+    </springProfile>
+</configuration>
