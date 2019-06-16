@@ -1,0 +1,4 @@
+server:
+  version: 1.001
+  company:
+    default-status: ACTIVE

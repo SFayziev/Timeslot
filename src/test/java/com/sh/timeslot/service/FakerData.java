@@ -1,7 +1,7 @@
 package com.sh.timeslot.service;
 
 import com.github.javafaker.Address;
-import com.github.javafaker.Company;
+import com.sh.timeslot.db.entity.Company;
 import com.github.javafaker.Faker;
 import com.sh.timeslot.model.request.CompanyRequest;
 
@@ -11,9 +11,9 @@ public class FakerData {
 
     public   static CompanyRequest generateCompanyRequest(){
 
-        Company comp =  faker.company();
+        com.github.javafaker.Company comp =  faker.company();
         Address addr = faker.address();
-        com.sh.timeslot.db.entity.Address address = com.sh.timeslot.db.entity.Address.builder().zipcode(addr.zipCode())
+        com.sh.timeslot.db.entity.Address address = com.sh.timeslot.db.entity.Address.builder().zipCode(addr.zipCode())
                 .state(addr.state())
                 .addressOne(addr.streetAddress())
                 .city(addr.cityName())
@@ -28,5 +28,23 @@ public class FakerData {
                 .build();
     }
 
+    public   static  com.sh.timeslot.db.entity.Company generateCompany(){
+
+        com.github.javafaker.Company comp =  faker.company();
+        Address addr = faker.address();
+        com.sh.timeslot.db.entity.Address address = com.sh.timeslot.db.entity.Address.builder().zipCode(addr.zipCode())
+                .state(addr.state())
+                .addressOne(addr.streetAddress())
+                .city(addr.cityName())
+                .addressTwo(addr.secondaryAddress())
+                .build();
+
+        return  Company.builder()
+                .email("test@gmail.com.test" )
+                .name(comp.name() )
+                .address(address)
+                // .phone(faker.phoneNumber().phoneNumber())
+                .build();
+    }
 
 }

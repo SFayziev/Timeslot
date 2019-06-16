@@ -1,7 +1,5 @@
 package com.sh.timeslot.model.request;
 
-
-import com.sh.timeslot.db.entity.Address;
 import lombok.*;
 
 @Builder
@@ -10,9 +8,6 @@ import lombok.*;
 @Getter
 @Setter
 @ToString
-public class CompanyRequest  {
+public class BranchRequest {
     private String name ;
-    private Address address;
-    private String phone ;
-    private String email ;
 }

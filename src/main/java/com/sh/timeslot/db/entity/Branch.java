@@ -20,18 +20,18 @@ import java.io.Serializable;
 @ToString
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @EqualsAndHashCode(callSuper = false)
-class Branch extends Base  implements Serializable {
+public class  Branch extends Base  implements Serializable {
 
     private static final long serialVersionUID = 5237467532432434686L;
+
+    @Size(max = 255, message = "{error.common.maxlength}")
+    private String name ;
 
     private Contact contact;
 
     @Size(max = 32, message = "{error.common.maxlength}")
     private String timezone ;
 
-    @GeoSpatialIndexed(type = GeoSpatialIndexType.GEO_2DSPHERE)
-    @JsonDeserialize(using = GeoJsonPointDeserializer.class)
-    @NotNull
-    private GeoJsonPoint point;
+
 
 }

@@ -8,13 +8,13 @@ import org.springframework.context.annotation.Bean;
 public class CacheConfig {
     @Bean
     public CacheManager cacheManager() {
-        SimpleCacheManager simpleCacheManager = new SimpleCacheManager();
+        return new SimpleCacheManager();
 //        GuavaCache cache1 = new GuavaCache("book", CacheBuilder.newBuilder().build());
 //        GuavaCache cache2 = new GuavaCache("books", CacheBuilder.newBuilder()
 //                .expireAfterAccess(30, TimeUnit.MINUTES)
 //                .build());
 //        simpleCacheManager.setCaches(Arrays.asList(cache1, cache2));
-        return simpleCacheManager;
+//        return simpleCacheManager;
     }
 
 

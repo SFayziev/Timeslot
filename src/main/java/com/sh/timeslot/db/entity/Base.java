@@ -16,30 +16,31 @@ import java.time.Instant;
 
 @Data
 @EqualsAndHashCode(callSuper = false)
-abstract class  Base implements Serializable {
+public abstract class  Base implements Serializable {
 
     private static final long serialVersionUID = 1L;
+
 
     @Id
     private String id;
 
     @CreatedBy
-    @Field("created_by")
+    @Field("createdBy")
     @JsonIgnore
     private String createdBy;
 
     @CreatedDate
-    @Field("created_date")
+    @Field("createdDate")
     @JsonIgnore
     private Instant createdDate = Instant.now();
 
     @LastModifiedBy
-    @Field("last_modified_by")
+    @Field("lastModifiedBy")
     @JsonIgnore
     private String lastModifiedBy;
 
     @LastModifiedDate
-    @Field("last_modified_date")
+    @Field("lastModifiedDate")
     @JsonIgnore
     private Instant lastModifiedDate = Instant.now();
 

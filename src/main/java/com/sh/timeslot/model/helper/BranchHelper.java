@@ -1,11 +1,12 @@
 package com.sh.timeslot.model.helper;
 
-import com.sh.timeslot.db.entity.Company;
-import com.sh.timeslot.model.mapper.CompanyMapper;
-import com.sh.timeslot.model.request.CompanyRequest;
-import com.sh.timeslot.model.response.CompanyResponse;
 
-public class CompanyHelper implements CompanyMapper  {
+import com.sh.timeslot.db.entity.Branch;
+import com.sh.timeslot.model.mapper.BranchMapper;
+import com.sh.timeslot.model.request.BranchRequest;
+import com.sh.timeslot.model.response.BranchResponse;
+
+public class BranchHelper  implements BranchMapper{
 
 
     /**
@@ -15,7 +16,7 @@ public class CompanyHelper implements CompanyMapper  {
      * @return Request object
      */
     @Override
-    public Company fromRequestToEntity(CompanyRequest request) {
+    public Branch fromRequestToEntity(BranchRequest request) {
         return INSTANCE.fromRequestToEntity(request);
     }
 
@@ -26,7 +27,7 @@ public class CompanyHelper implements CompanyMapper  {
      * @return Response object
      */
     @Override
-    public CompanyResponse fromEntityToResponse(Company entity) {
+    public BranchResponse fromEntityToResponse(Branch entity) {
         return INSTANCE.fromEntityToResponse(entity);
     }
 }

@@ -13,18 +13,18 @@ public interface CompanyService {
      * Create Company
      *
      *
-     * @param request {@link CompanyRequest}
+     * @param request {@link Company}
      * @return {@link Company}
      */
-    Company createCompany(CompanyRequest request);
+    Company createCompany(Company request);
 
     /**
      * get Company request
      *
-     * @param request {@link CompanyRequest}
+     * @param request {@link Company}
      * @return List of {@link Company}
      */
-    List<Company> getCompanies(CompanyRequest request);
+    List<Company> getCompanies(Company request);
 
     /**
      *

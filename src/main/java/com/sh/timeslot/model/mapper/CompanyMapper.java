@@ -11,5 +11,4 @@ public interface CompanyMapper extends BaseMapper<Company, CompanyRequest,Compan
 
     CompanyMapper INSTANCE = Mappers.getMapper( CompanyMapper.class );
 
-
 }

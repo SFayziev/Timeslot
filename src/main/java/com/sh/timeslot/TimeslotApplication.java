@@ -1,8 +1,10 @@
 package com.sh.timeslot;
 
+import com.sh.timeslot.common.ServiceConfig;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.core.env.Environment;
 
@@ -13,6 +15,7 @@ import java.util.TimeZone;
 @SpringBootApplication
 @Slf4j
 @EnableCaching
+@EnableConfigurationProperties(ServiceConfig.class)
 public class TimeslotApplication {
 
     public static void main(String[] args) throws UnknownHostException {

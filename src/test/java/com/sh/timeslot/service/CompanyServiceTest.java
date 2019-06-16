@@ -1,9 +1,7 @@
 package com.sh.timeslot.service;
 
+import com.sh.timeslot.common.ServiceConfig;
 import com.sh.timeslot.db.entity.Company;
-import com.sh.timeslot.model.MongoQueryField;
-import com.sh.timeslot.model.request.CompanyRequest;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -24,15 +22,19 @@ public class CompanyServiceTest {
     @Autowired
     private CompanyService companyService;
 
+    @Autowired
+    private ServiceConfig serviceConfig;
+
     @Before
     public void setUp() throws Exception {
     }
 
     @Test
     public void createCompany_and_expect_success(){
-        CompanyRequest comRequest  =  FakerData.generateCompanyRequest();
-        Company com = companyService.createCompany(comRequest);
-        Assert.assertEquals(comRequest.getName(), com.getName() );
+        Company comRequest  =  FakerData.generateCompany();
+        Company com = companyService.createCompany( comRequest);
+        assertEquals(comRequest.getName(), com.getName() );
+        assertEquals( serviceConfig.getCompany().getDefaultStatus(), com.getStatus() );
         assertEquals( comRequest.getAddress().getCity(), com.getAddress().getCity() );
 
     }
@@ -40,9 +42,9 @@ public class CompanyServiceTest {
 
     @Test
     public void getCompany_and_expect_success(){
-        companyService.createCompany(FakerData.generateCompanyRequest());
-        companyService.createCompany(FakerData.generateCompanyRequest());
-        CompanyRequest comRequest  =  FakerData.generateCompanyRequest();
+        companyService.createCompany(FakerData.generateCompany());
+        companyService.createCompany(FakerData.generateCompany());
+        Company comRequest  =  FakerData.generateCompany();
         companyService.createCompany(comRequest);
 
         List<Company> companyList = companyService.getCompanies(comRequest);

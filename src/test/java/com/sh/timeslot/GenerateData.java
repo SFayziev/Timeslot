@@ -39,7 +39,7 @@ public class GenerateData {
                 .addressOne( faddress.fullAddress() )
                 .city(faddress.city())
                 .state(faddress.state())
-                .zipcode(faddress.zipCode())
+                .zipCode(faddress.zipCode())
                 .build();
     }
 

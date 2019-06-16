@@ -1,11 +1,11 @@
 package com.sh.timeslot.service.impl;
 
+import com.sh.timeslot.common.ServiceConfig;
 import com.sh.timeslot.common.enums.BaseStatus;
 import com.sh.timeslot.db.entity.Company;
 import com.sh.timeslot.common.logging.TSLog;
-import com.sh.timeslot.model.helper.CompanyHelper;
-import com.sh.timeslot.model.request.CompanyRequest;
 import com.sh.timeslot.service.CompanyService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Query;
@@ -15,36 +15,31 @@ import java.util.List;
 
 @Service
 @CacheConfig(cacheNames = {"company"})
-public class CompanyServiceImpl implements CompanyService {
+public class CompanyServiceImpl extends BaseService<Company> implements CompanyService {
 
-   //private CompanyRepository companyRepository;
-    private CompanyHelper helper = new CompanyHelper();
-    private final MongoTemplate template;
+    ServiceConfig config2;
+
+    @Autowired
+    public CompanyServiceImpl(ServiceConfig config, MongoTemplate template) {
+        super(config, template);
+        config2 = config;
 
 
-
-    public CompanyServiceImpl( MongoTemplate template) {
-      //  this.companyRepository = companyRepository;
-        this.template = template;
     }
-
 
 
     @Override
     @TSLog()
-    public Company createCompany(CompanyRequest request) {
-        return template
-                .save(helper.requestToEntity(request));
+    public Company createCompany(Company request) {
+        request.setStatus(config2.getCompany().getDefaultStatus() );
+        return super.insert(request);
 
     }
 
     @Override
-    public List<Company> getCompanies(CompanyRequest request) {
-        MongoQueryBuilder<CompanyRequest> requestMongoService = new MongoQueryBuilder<>(request);
-        Query query = requestMongoService.build();
-       // return new PagingResponseModel<>(PageableExecutionUtils.getPage(mongoTemplate.find(query, Trip.class), searchParams.getPageable(), () -> mongoTemplate.count(query, Trip.class)));
+    public List<Company> getCompanies(Company request) {
 
-        return template.find(query, Company.class);
+        return (List<Company>) find(request);
     }
 
     @Override
