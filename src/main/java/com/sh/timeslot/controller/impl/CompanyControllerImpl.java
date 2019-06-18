@@ -23,6 +23,7 @@ public class CompanyControllerImpl implements CompanyController {
         this.companyService = companyService;
     }
 
+
     public ResponseEntity<CompanyResponse> createCompany(@RequestBody CompanyRequest request) {
         return  ResponseEntity.ok(
                         helper.fromEntityToResponse(
@@ -34,7 +35,7 @@ public class CompanyControllerImpl implements CompanyController {
     }
 
     /**
-     * Create new company
+     * Get company list by Example
      *
      * @param request
      * @return

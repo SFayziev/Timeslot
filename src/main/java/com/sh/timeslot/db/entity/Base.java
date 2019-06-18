@@ -15,7 +15,7 @@ import java.time.Instant;
 //import javax.persistence.Column;
 
 @Data
-@EqualsAndHashCode(callSuper = false)
+@EqualsAndHashCode
 public abstract class  Base implements Serializable {
 
     private static final long serialVersionUID = 1L;

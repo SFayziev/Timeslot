@@ -1,7 +1,7 @@
 package com.sh.timeslot.service.impl;
 
 import com.sh.timeslot.common.ServiceConfig;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.sh.timeslot.db.entity.Base;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Query;
 
@@ -24,7 +24,7 @@ public class BaseService<T extends com.sh.timeslot.db.entity.Base > {
     }
 
 
-    protected List<? extends com.sh.timeslot.db.entity.Base> find(T t){
+    protected List<? extends Base> find(T t){
         MongoQueryBuilder<T> requestMongoService = new MongoQueryBuilder<T>(t);
         Query query = requestMongoService.build();
         return template.find(query, t.getClass());

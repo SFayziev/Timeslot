@@ -1,4 +1,4 @@
-Feature: version control
+Feature: Version control
 
   Scenario: client makes call to GET /version
     When the client calls /version

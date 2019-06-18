@@ -1,5 +1,5 @@
 
-Feature: Company controller /company
+Feature: Company controller
 
 
   Scenario Outline: client makes call to post /company

@@ -18,11 +18,9 @@ public class Contact  extends Base  implements Serializable {
 
     private Address address;
 
-//    @Column(name = "phone")
     @Size(max = 255, message = "{error.common.maxlength}")
     private String phone;
 
-//    @Column(name = "email")
     @Size(max = 255, message = "{error.common.maxlength}")
     private String email;
 

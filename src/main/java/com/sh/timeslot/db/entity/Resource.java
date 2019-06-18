@@ -17,7 +17,7 @@ import java.io.Serializable;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @Builder
 @EqualsAndHashCode(callSuper = false)
-class Resource extends Base  implements Serializable {
+public class Resource extends Base  implements Serializable {
 
     private static final long serialVersionUID = 5237463434365854686L;
 
@@ -32,6 +32,7 @@ class Resource extends Base  implements Serializable {
 
     private Contact contact;
 
-    private BaseStatus status;
+    @Builder.Default
+    private BaseStatus status= BaseStatus.ACTIVE;
 
 }
