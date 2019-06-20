@@ -17,7 +17,7 @@ import java.util.List;
 @CacheConfig(cacheNames = {"company"})
 public class CompanyServiceImpl extends BaseService<Company> implements CompanyService {
 
-    ServiceConfig config2;
+    private ServiceConfig config2;
 
     @Autowired
     public CompanyServiceImpl(ServiceConfig config, MongoTemplate template) {
@@ -32,6 +32,7 @@ public class CompanyServiceImpl extends BaseService<Company> implements CompanyS
     @TSLog()
     public Company createCompany(Company request) {
         request.setStatus(config2.getCompany().getDefaultStatus() );
+        request.setIdentifier(getIncreasedSequenceId(Company.class.getName()));
         return super.insert(request);
 
     }

@@ -32,6 +32,7 @@ public class CompanyServiceTest {
     @Test
     public void createCompany_and_expect_success(){
         Company comRequest  =  FakerData.generateCompany();
+
         Company com = companyService.createCompany( comRequest);
         assertEquals(comRequest.getName(), com.getName() );
         assertEquals( serviceConfig.getCompany().getDefaultStatus(), com.getStatus() );

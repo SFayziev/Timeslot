@@ -7,8 +7,8 @@ import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
 @Mapper
-public interface CompanyMapper extends BaseMapper<Company, CompanyRequest,CompanyResponse> {
+public interface CompanyMapper extends BaseMapper<Company, CompanyRequest, CompanyResponse> {
 
-    CompanyMapper INSTANCE = Mappers.getMapper( CompanyMapper.class );
+    CompanyMapper INSTANCE = Mappers.getMapper(CompanyMapper.class);
 
 }

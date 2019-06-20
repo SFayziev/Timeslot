@@ -9,5 +9,7 @@ import lombok.*;
 @Setter
 @ToString
 public class ResourceRequest {
+    private Long id ;
     private String name ;
+
 }

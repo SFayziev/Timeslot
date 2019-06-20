@@ -27,6 +27,7 @@ public class BranchServiceImpl extends BaseService<Branch> implements BranchServ
      */
     @Override
     public Branch createBranch(Branch branch) {
+        branch.setIdentifier(getIncreasedSequenceId(Branch.class.getName()));
         return insert(branch);
     }
 

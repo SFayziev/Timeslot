@@ -6,7 +6,7 @@ import lombok.Data;
 
 @Data
 public class CompanyResponse  {
-
+    private Long id ;
     private String name ;
     private Address address;
     private String phone ;

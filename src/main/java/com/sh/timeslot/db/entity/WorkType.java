@@ -5,8 +5,8 @@ import lombok.*;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
+@EqualsAndHashCode(callSuper = true)
 @Data
 @ToString
 @JsonInclude(JsonInclude.Include.NON_NULL)
@@ -14,10 +14,10 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class WorkType {
-    private String name ;
-    private String description ;
-    private boolean active ;
-    private LocalDateTime startDateTime ;
+public class WorkType extends Base {
+    private String name;
+    private String description;
+    private boolean active;
+    private LocalDateTime startDateTime;
     private LocalDateTime endDateTime;
 }

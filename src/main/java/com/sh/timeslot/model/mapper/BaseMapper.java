@@ -1,6 +1,9 @@
 package com.sh.timeslot.model.mapper;
 
-public interface BaseMapper<T,R,Q> {
+import com.sh.timeslot.db.entity.Base;
+import org.mapstruct.Mapping;
+
+public interface BaseMapper<T extends Base,R,Q> {
 
 
     /**
@@ -10,6 +13,10 @@ public interface BaseMapper<T,R,Q> {
      * @param request request object
      * @return Request object
      */
+
+
+    @Mapping(source = "id", target = "identifier")
+    @Mapping(target = "id", ignore = true)
     T fromRequestToEntity(R request );
 
     /**
@@ -19,6 +26,8 @@ public interface BaseMapper<T,R,Q> {
      * @param entity entity object
      * @return Response object
      */
+
+    @Mapping(source = "identifier", target = "id")
     Q fromEntityToResponse(T entity);
 
 }

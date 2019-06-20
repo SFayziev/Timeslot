@@ -39,12 +39,12 @@ public class FakerData {
                 .addressTwo(addr.secondaryAddress())
                 .build();
 
-        return  Company.builder()
-                .email("test@gmail.com.test" )
-                .name(comp.name() )
-                .address(address)
-                // .phone(faker.phoneNumber().phoneNumber())
-                .build();
+        Company company = new Company();
+        company.setEmail("test@gmail.com.test" );
+        company.setName(comp.name());
+        company.setAddress(address);
+        return company;
+
     }
 
 }

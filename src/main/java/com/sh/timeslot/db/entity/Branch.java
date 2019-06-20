@@ -3,6 +3,7 @@ package com.sh.timeslot.db.entity;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.sh.timeslot.common.jersey.GeoJsonPointDeserializer;
+import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
@@ -20,7 +21,8 @@ import java.io.Serializable;
 @ToString
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @EqualsAndHashCode(callSuper = false)
-public class  Branch extends Base  implements Serializable {
+//@Builder
+public class  Branch extends BaseLog  implements Serializable {
 
     private static final long serialVersionUID = 5237467532432434686L;
 

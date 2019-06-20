@@ -9,5 +9,6 @@ import lombok.*;
 @Setter
 @ToString
 public class BranchRequest {
+    private Long id ;
     private String name ;
 }

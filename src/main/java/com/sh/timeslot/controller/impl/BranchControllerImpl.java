@@ -7,12 +7,11 @@ import com.sh.timeslot.model.response.BranchResponse;
 import com.sh.timeslot.service.BranchService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
-//@Service
+
 public class BranchControllerImpl implements BranchController {
 
     private BranchService branchService;
@@ -51,10 +50,10 @@ public class BranchControllerImpl implements BranchController {
     public ResponseEntity<List<BranchResponse>> getBranch(BranchRequest request) {
         return ResponseEntity.ok(
                 branchService.getBranches(
-                    helper.fromRequestToEntity(request)
+                        helper.fromRequestToEntity(request)
                 )
                         .stream()
-                        .map( t-> helper.fromEntityToResponse(t) )
+                        .map(t -> helper.fromEntityToResponse(t))
                         .collect(Collectors.toList())
         );
     }

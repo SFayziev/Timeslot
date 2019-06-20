@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.*;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+@EqualsAndHashCode(callSuper = true)
 @Data
 @ToString
 @JsonInclude(JsonInclude.Include.NON_NULL)
@@ -11,7 +12,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Rule extends Base {
+public class Rule extends BaseLog {
     private boolean defaultRule;
     private String  name ;
 

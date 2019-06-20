@@ -15,7 +15,7 @@ import java.io.Serializable;
 @ToString
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @EqualsAndHashCode(callSuper = false)
-class Customer extends Base  implements Serializable {
+class Customer extends BaseLog  implements Serializable {
 
     private static final long serialVersionUID = 523746732432344686L;
     @Size(max = 255, message = "{error.common.maxlength}")

@@ -11,28 +11,28 @@ import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
 
+@EqualsAndHashCode(callSuper = true)
 @Data
 @ToString
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @Document(collection = "Company")
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
+//@Builder(builderMethodName = "createWithBuilder")
 public class Company extends Base  implements Serializable  {
 
-    private static final long serialVersionUID = 5237467505965854686L;
+    private static final long serialVersionUID = 5237462423265854686L;
 
     private Address address;
 
     @Getter(onMethod_ = { @MongoQueryField})
-    @Indexed(unique = true)
     private String name ;
 
     @Getter(onMethod_={ @MongoQueryField})
     private String email ;
 
     @NotNull
-    @Builder.Default
+//    @Builder.Default
     private BaseStatus status = BaseStatus.INACTIVE;
 
 

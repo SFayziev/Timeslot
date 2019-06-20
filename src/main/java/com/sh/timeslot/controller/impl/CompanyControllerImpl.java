@@ -46,9 +46,9 @@ public class CompanyControllerImpl implements CompanyController {
                 companyService.getCompanies(
                         helper.fromRequestToEntity(request))
                         .stream()
-                        .map( t->  helper.fromEntityToResponse(t)).collect(Collectors.toList())
-                        );
-
+                        .map( t->  helper.fromEntityToResponse(t))
+                        .collect(Collectors.toList())
+            );
 
     }
 }
