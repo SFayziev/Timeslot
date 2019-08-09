@@ -3,6 +3,7 @@ package com.sh.timeslot.service;
 import com.github.javafaker.Address;
 import com.sh.timeslot.db.entity.Company;
 import com.github.javafaker.Faker;
+import com.sh.timeslot.model.request.AddressRequest;
 import com.sh.timeslot.model.request.CompanyRequest;
 
 public class FakerData {
@@ -13,7 +14,7 @@ public class FakerData {
 
         com.github.javafaker.Company comp =  faker.company();
         Address addr = faker.address();
-        com.sh.timeslot.db.entity.Address address = com.sh.timeslot.db.entity.Address.builder().zipCode(addr.zipCode())
+        AddressRequest address = AddressRequest.builder().zipCode(addr.zipCode())
                 .state(addr.state())
                 .addressOne(addr.streetAddress())
                 .city(addr.cityName())
@@ -40,6 +41,7 @@ public class FakerData {
                 .build();
 
         Company company = new Company();
+
         company.setEmail("test@gmail.com.test" );
         company.setName(comp.name());
         company.setAddress(address);

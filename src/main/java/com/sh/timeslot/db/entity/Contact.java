@@ -11,7 +11,6 @@ import java.io.Serializable;
 @Data
 @Builder
 @EqualsAndHashCode(callSuper = false)
-
 public class Contact  extends Base  implements Serializable {
 
     private static final long serialVersionUID = 523743243265854686L;

@@ -11,6 +11,7 @@ import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.PostConstruct;
 import java.util.List;
 
 @Service
@@ -18,13 +19,12 @@ import java.util.List;
 public class CompanyServiceImpl extends BaseService<Company> implements CompanyService {
 
     private ServiceConfig config2;
+    private String seqKey =Company.class.getName();
 
     @Autowired
     public CompanyServiceImpl(ServiceConfig config, MongoTemplate template) {
         super(config, template);
         config2 = config;
-
-
     }
 
 
@@ -32,7 +32,7 @@ public class CompanyServiceImpl extends BaseService<Company> implements CompanyS
     @TSLog()
     public Company createCompany(Company request) {
         request.setStatus(config2.getCompany().getDefaultStatus() );
-        request.setIdentifier(getIncreasedSequenceId(Company.class.getName()));
+        request.setIdentifier(getIncreasedSequenceId(seqKey));
         return super.insert(request);
 
     }
@@ -45,7 +45,6 @@ public class CompanyServiceImpl extends BaseService<Company> implements CompanyS
 
     @Override
     public boolean changeCompanyStatus(String id, BaseStatus status) {
-
 
         return false;
     }

@@ -12,5 +12,4 @@ public interface BranchMapper extends BaseMapper<Branch, BranchRequest, BranchRe
 
     BranchMapper INSTANCE = Mappers.getMapper( BranchMapper.class );
 
-
 }

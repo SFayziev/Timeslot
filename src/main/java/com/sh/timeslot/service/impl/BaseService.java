@@ -11,6 +11,7 @@ import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Update;
 
 import java.util.List;
+import java.util.Objects;
 
 
 public class BaseService<T extends com.sh.timeslot.db.entity.Base > {
@@ -41,16 +42,15 @@ public class BaseService<T extends com.sh.timeslot.db.entity.Base > {
      * @param key sequence key
      * @return increased result
      */
-    public long getIncreasedSequenceId(String key) {
-        return  template.findAndModify(new Query(Criteria.where("_id").is(key)),
+    public synchronized long getIncreasedSequenceId(String key) {
+        SequenceId seg =template.findAndModify(new Query(Criteria.where("_id").is(key)),
                         new Update().inc("seq", 1),
-                        new FindAndModifyOptions().returnNew(true),
-                        SequenceId.class).getSeq();
+                        new FindAndModifyOptions().returnNew(true).upsert(true),
+                        SequenceId.class);
 
-
+        return Objects.isNull(seg)? 1 :  seg.getSeq();
 
     }
-
 
 
 }
