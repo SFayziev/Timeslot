@@ -9,6 +9,4 @@ public @interface MongoQueryField {
 
     String name() default "";
 
-
-
 }

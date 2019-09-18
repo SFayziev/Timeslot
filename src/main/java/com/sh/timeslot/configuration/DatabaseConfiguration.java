@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.mongo.MongoAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
+import org.springframework.context.annotation.Profile;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.data.mongodb.core.convert.MongoCustomConversions;
 import org.springframework.data.mongodb.core.mapping.event.ValidatingMongoEventListener;
@@ -20,7 +21,7 @@ import java.util.List;
 @Configuration
 @EnableMongoRepositories("com.sh.timeslot.db")
 @Import(value = MongoAutoConfiguration.class)
-//@EnableMongoAuditing(auditorAwareRef = "springSecurityAuditorAware")
+@Profile({"dev", "mongo"})
 public class DatabaseConfiguration {
 
     private final Logger log = LoggerFactory.getLogger(DatabaseConfiguration.class);

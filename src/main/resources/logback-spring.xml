@@ -36,7 +36,8 @@
         </logger>
     </springProfile>
     <springProfile name="test">
-        <logger name="org.springframework.data.mongodb.core.MongoTemplate" level="WARN" />
+        <logger name="org.springframework.data.mongodb.core.MongoTemplate" level="INFO" />
+        <logger name="org.springframework" level="INFO" />
         <logger name="com.netflix.eureka" level="WARN" />
         <logger name="com.netflix.discovery" level="OFF" />
         <logger name="com.sh" level="ALL" />

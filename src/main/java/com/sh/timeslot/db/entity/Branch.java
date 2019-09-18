@@ -20,7 +20,6 @@ import java.io.Serializable;
 @Data
 @ToString
 @JsonInclude(JsonInclude.Include.NON_NULL)
-@EqualsAndHashCode(callSuper = false)
 //@Builder
 public class  Branch extends BaseLog  implements Serializable {
 
@@ -33,7 +32,5 @@ public class  Branch extends BaseLog  implements Serializable {
 
     @Size(max = 32, message = "{error.common.maxlength}")
     private String timezone ;
-
-
 
 }

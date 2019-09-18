@@ -10,8 +10,8 @@ import java.time.LocalTime;
 @Data
 public class OperationHourSlot extends Base{
 
-    private LocalTime startTime ;
-    private LocalTime endTime ;
+    private LocalTime startTime = LocalTime.MIN;
+    private LocalTime endTime =LocalTime.MAX;
     private DayOfWeek dayOfWeek;
 
 }

@@ -8,7 +8,6 @@ import com.sh.timeslot.service.CompanyService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -16,15 +15,15 @@ import java.util.stream.Collectors;
 @Service
 @Slf4j
 public class CompanyControllerImpl implements CompanyController {
-    private CompanyService companyService;
-    private CompanyHelper helper = new CompanyHelper();
+    private final CompanyService companyService;
+    private final CompanyHelper helper = new CompanyHelper();
 
     public CompanyControllerImpl(CompanyService companyService) {
         this.companyService = companyService;
     }
 
 
-    public ResponseEntity<CompanyResponse> createCompany(@RequestBody CompanyRequest request) {
+    public ResponseEntity<CompanyResponse> createCompany(CompanyRequest request) {
         return  ResponseEntity.ok(
                         helper.fromEntityToResponse(
                                 companyService.createCompany(
@@ -46,7 +45,7 @@ public class CompanyControllerImpl implements CompanyController {
                 companyService.getCompanies(
                         helper.fromRequestToEntity(request))
                         .stream()
-                        .map( t->  helper.fromEntityToResponse(t))
+                        .map(helper::fromEntityToResponse)
                         .collect(Collectors.toList())
             );
 

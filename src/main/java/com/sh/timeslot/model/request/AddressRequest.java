@@ -10,18 +10,9 @@ import lombok.*;
 @Setter
 @ToString
 public class AddressRequest {
-
     private String addressOne;
-
-
     private String addressTwo;
-
-
     private String city;
-
-
     private String state;
-
-
     private String zipCode;
 }

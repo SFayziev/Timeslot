@@ -5,8 +5,6 @@ import com.sh.timeslot.service.FakerData;
 import org.junit.Test;
 import org.springframework.data.mongodb.core.query.Query;
 
-import static org.junit.Assert.*;
-
 public class MongoQueryBuilderTest {
 
     @Test

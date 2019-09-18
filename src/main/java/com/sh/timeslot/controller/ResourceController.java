@@ -12,8 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-@RestController
-@RequestMapping(value = "resource")
+@RestController(value = "resource")
 public interface ResourceController {
 
     /**
